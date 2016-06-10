@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Waypoint from '../src/waypoint.jsx';
 
 let div;
@@ -7,7 +6,7 @@ let div;
 const renderAttached = function(component) {
   div = document.createElement('div');
   document.body.appendChild(div);
-  const renderedComponent = ReactDOM.render(component, div);
+  const renderedComponent = React.render(component, div);
   return renderedComponent;
 };
 
@@ -57,7 +56,7 @@ describe('<Waypoint>', function() {
 
   afterEach(() => {
     if (div) {
-      ReactDOM.unmountComponentAtNode(div);
+      React.unmountComponentAtNode(div);
     }
     scrollNodeTo(window, 0);
   });
@@ -536,7 +535,7 @@ describe('<Waypoint>', function() {
   describe('when the scrollable parent is not displayed', () => {
     it('calls the onLeave handler', () => {
       this.component = this.subject();
-      const node = ReactDOM.findDOMNode(this.component);
+      const node = React.findDOMNode(this.component);
       node.style.display = 'none';
       scrollNodeTo(this.component, 0);
       expect(this.props.onLeave).

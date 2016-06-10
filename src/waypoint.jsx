@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import ReactDOM from 'react-dom';
 
 const POSITIONS = {
   above: 'above',
@@ -99,7 +98,7 @@ export default class Waypoint extends React.Component {
       return this.props.scrollableAncestor;
     }
 
-    let node = ReactDOM.findDOMNode(this);
+    let node = React.findDOMNode(this);
 
     while (node.parentNode) {
       node = node.parentNode;
@@ -189,7 +188,7 @@ export default class Waypoint extends React.Component {
    *   `POSITIONS.below`, or `POSITIONS.inside`.
    */
   _currentPosition() {
-    const waypointTop = ReactDOM.findDOMNode(this).getBoundingClientRect().top;
+    const waypointTop = React.findDOMNode(this).getBoundingClientRect().top;
     let contextHeight;
     let contextScrollTop;
     if (this.scrollableAncestor === window) {
@@ -197,7 +196,7 @@ export default class Waypoint extends React.Component {
       contextScrollTop = 0;
     } else {
       contextHeight = this.scrollableAncestor.offsetHeight;
-      contextScrollTop = ReactDOM
+      contextScrollTop = React
         .findDOMNode(this.scrollableAncestor)
         .getBoundingClientRect().top;
     }
